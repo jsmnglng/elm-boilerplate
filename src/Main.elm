@@ -5,7 +5,7 @@ import Html exposing (..)
 type alias Model =
     { message : String }
 
-init : String -> ( Model, Cmd Msg )
+init : () -> ( Model, Cmd Msg )
 init _ =
     ( {message = "Hello World"}, Cmd.none)
 
