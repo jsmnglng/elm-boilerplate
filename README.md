@@ -1,23 +1,25 @@
-# Elm Boilerplate
+# Elm Boilerplate with Webpack
 
 1. `elm init`
 2. Structure elm file(s) with `Browser.document`
 3. `npm init -y`
-4. npm install —save-dev
-   1. webpack
-   2. webpack-cli
-   3. webpack-dev-server
-   4. elm-webpack-loader
-   5. file-loader (for images/assets)
-   6. style-loader
-   7. sass-loader
-   8. css-loader
-   9. node-sass
-   10. bulma
-   11. mini-css-extract-plugin
-   12. html-webpack-plugin
+4. `npm install --save-dev`
+    - webpack
+    - webpack-cli
+    - webpack-dev-server
+    - elm-webpack-loader
+    - html-webpack-plugin
+    - file-loader (for images/assets)
+    - style-loader (optional)
+    - sass-loader (optional)
+    - css-loader (optional)
+    - node-sass (optional)
+    - bulma (optional)
+    - mini-css-extract-plugin (optional)
 5. Add scripts (essential: `"start:dev": "webpack-dev-server"`)
-6. configure `webpack.config.js`
+6. Configure `webpack.config.js`
 7. Create an html template `src/index.html`
-8. Initialize elm app in `src/index.js`
-9. `.gitignore` `elm-stuff`, `npm-modules` and `dist`
+8. If there's styling, create a `src/index.css` file or your chosen CSS preprocessor (`src/index.sass`)
+9. Initialize elm app in `src/index.js`. (Don't forget to import your CSS here)
+10. `.gitignore` `elm-stuff`, `npm-modules` and `dist`
+11. Run `npm run start:dev` 
