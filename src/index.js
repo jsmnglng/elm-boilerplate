@@ -1,6 +1,4 @@
-"use strict";
+import './style.scss';
+import ElmEnv from './Main.elm';
 
-// Stylesheet imports
-import "./styles/index.sass";
-
-const app = require("./Main.elm").Elm.Main.init();
+ElmEnv.Elm.Main.init();

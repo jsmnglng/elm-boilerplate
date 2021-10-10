@@ -1,43 +1,42 @@
+const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const elmSource = __dirname + "/";
 
 module.exports = {
+  entry: './src/index.js',
   // mode: (process.env.NODE_ENV == 'production' ? 'production' : 'development'),
+  mode: 'development',
   module: {
     rules: [
       {
-        test: /\.elm$/,
+        test: /\.s[ac]ss$/i,
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader",
+        ],
+      },
+      {
+        test: /\.elm/,
         exclude: [/elm-stuff/, /node_modules/],
         use: {
-          loader: "elm-webpack-loader",
-          options: {
-            cwd: elmSource
-            // optimize: (process.env.NODE_ENV == 'production' ? true : false)
-          }
-        }
+          loader: 'elm-webpack-loader',
+          options: {},
+        },
       },
-      {
-        test: /\.(sa|sc|c)ss$/,
-        use: ["style-loader", "css-loader", "sass-loader"]
-      },
-      {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: ["file-loader"]
-      }
-    ]
+    ],
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: "src/index.html" }),
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    })
+    new HtmlWebpackPlugin({
+      title: 'Elm Boilerplate',
+    }),
   ],
-  watchOptions: {
-    ignored: [/node_modules/, /elm-stuff/]
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true
   },
   devServer: {
-    clientLogLevel: "info"
+    static: './dist',
+    host: '0.0.0.0',
   }
 };
